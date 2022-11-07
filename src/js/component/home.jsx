@@ -15,10 +15,7 @@ if (todos.length > 0) {
 }
 
 
-const removeTodo = (id) => {
-    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-  };
+
 
 let todo = {id: id, text: text};
 let newTodos = [todo, ...todos];
@@ -26,7 +23,10 @@ setTodos(newTodos)
 
 };
 
-
+const removeTodo = (id) => {
+    let updatedTodos = [...todos].filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+  };
 
 
 	return (
@@ -35,7 +35,7 @@ setTodos(newTodos)
 			<ToDoForm addTodo = {addTodo}/>
 			{!todos.length && "No tasks, add a new task"}
 			{todos.map((todo) => {
-				return <TodoItem key={todo.id} todo={todo} />
+				return <TodoItem removeTodo={removeTodo} key={todo.id} todo={todo} />
 			})}
 		</div>
 	);
